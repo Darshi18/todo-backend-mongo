@@ -2,6 +2,8 @@ var express=require("express");
 var mongoose=require("mongoose");
 var bodyParser=require("body-parser");
 var app=express();
+const port =  process.env.PORT || 3000
+
 
 app.set('view engine','ejs');
 app.use(express.static("public"));
@@ -12,13 +14,13 @@ const itemSchema={
 }
 const Item=mongoose.model("Item",itemSchema);
 const item1=new Item({
-    name:"Welcome to CodinGyaan",
+    name:"homework",
 });
 const item2=new Item({
-    name:"Like ,Share and Subscribe",
+    name:"classwork",
 });
 const item3=new Item({
-    name:"Enjoy learning",
+    name:"learning mern",
 });
 const d=[item1,item2,item3];
 /*
@@ -83,8 +85,8 @@ app.post("/delete",function(req,res)
   })
 });
 
-app.listen(3000,function()
+app.listen(port,function()
 {
-    console.log("Server is listening to port 3000");
+    console.log("Server is listening to port${port}");
 })
 
